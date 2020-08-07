@@ -4,7 +4,6 @@ import lk.bank.model.Account;
 import lk.bank.model.User;
 import lk.bank.threadPool.ThreadHandler;
 import lk.bank.threadPool.ThreadPool;
-
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -15,7 +14,8 @@ import java.util.Scanner;
 
 public class Server {
 
-    static ArrayList<User> users;  //created two methods to load and get the array list
+    //created two methods to load and get the array list
+    static ArrayList<User> users;
 
     public static void main(String[] args) throws IOException {
 
@@ -28,9 +28,12 @@ public class Server {
             ThreadPool threadPool = new ThreadPool(2);
             Scanner scn = new Scanner(System.in);
             System.out.println("SERVER STARTED ON PORT 5000");
-            loadUsers();  //called the newly created user loading method
 
-            while (true) {   //After all the threads finish their work server shutdowns itself or we can call shutdownImmediately() method in the ThreadPool class
+            //called the newly created user loading method
+            loadUsers();
+
+            //After all the threads finish their work server shutdowns itself or we can call shutdownImmediately() method in the ThreadPool class
+            while (true) {
 
                 socket = serverSocket.accept();
                 System.out.println("Client Connected on port :" + socket.getPort());
@@ -45,9 +48,12 @@ public class Server {
                 if (InputText.equals("Shutdown")) {
 
                     threadPool.shutdownImmediately();
-                    if(scn!=null){scn.close();}//closing the scanner
-                    break; //not a endless while shutting down the server after receiving the input shutdown
 
+                    //closing the scanner
+                    if(scn!=null)scn.close();
+
+                    //not a endless while shutting down the server after receiving the input shutdown
+                    break;
                 }
 
             }
@@ -63,7 +69,6 @@ public class Server {
         }
     }
 
-//    Tried using try finally block but ended up getting a 'socket closed' error even after several tries, there for used a try catch and closed the socket and both the streams in the finally scope
 
     public static ArrayList<User> getUsers() {
         return users;

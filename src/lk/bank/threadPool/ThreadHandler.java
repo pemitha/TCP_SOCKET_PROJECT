@@ -35,7 +35,8 @@ public class ThreadHandler implements Runnable {
             try {
                 if (user != null) {
                     if (!user.getLogged()) {
-                        statusLogged = loginConst; // as mentioned used constant values to set some values
+                        //as mentioned used constant values to set some values
+                        statusLogged = loginConst;
                     } else {
                         statusLogged = logoutConst;
                     }
@@ -57,13 +58,16 @@ public class ThreadHandler implements Runnable {
                 switch (inputText) {
 
                     case "01":
-                        loginProcess(statusLogged); // replaced the codes inside with a method to make the code look more cleaner
+                        // replaced the codes inside with a method to make the code look more cleaner
+                        loginProcess(statusLogged);
                         break;
                     case "02":
-                        bankDetails();// replaced the codes inside with a method to make the code look more cleaner
+                        // replaced the codes inside with a method to make the code look more cleaner
+                        bankDetails();
                         break;
                     case "03":
-                        fundTransaction();// replaced the codes inside with a method to make the code look more cleaner
+                        // replaced the codes inside with a method to make the code look more cleaner
+                        fundTransaction();
                         break;
                     case "04":
                         dataOutputStream.writeUTF("Leaving");

@@ -7,7 +7,6 @@ public class Account {
     private final String expirationDate;
     private double price;
 
-
     public Account(String accno, String cvv, String expirationDate, double price) {
         this.accno = accno;
         this.cvv = cvv;
